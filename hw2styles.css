@@ -1,0 +1,113 @@
+/*
+Program name- Cura Cardiology Clinic patient form.html 
+Name- Daisy Que
+date created-2/24/2026
+version 1.0-2/24/26, 2.0-2/25/26,
+Description- This document will be the css file to make the page look cleaner.
+NOTE: I used the TP resources from MISSO but I used my own variables 
+*/
+header{
+width:100%;
+background-color:rgb(225,192,203); /* color:Pink, got this from W3 school HTML color section website*/  
+}
+body{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  background-color:rgb(245,255,250);
+  margin:0;
+  height:100%;
+  min-height:100vh;
+}
+h1,h2{
+text-align:center;
+font-family:"public sans",sans-serif;
+font-weight:normal;
+flex-grow:1;
+}
+main{
+text-align:center;
+font-family:"public sans",sans-serif;
+font-weight:normal;
+flex-grow:1;
+}
+.image{
+text-align:left;
+}
+.td1{
+text-align:right;
+font-family:"public sans,sans-serif";
+/*/font-weight:bold;*//
+}
+
+
+th{
+text-align:center;
+font-family:"public sans",sans-serif;
+font-weight:bold;
+}
+footer{
+position:flex;
+bottom:0;
+width:100%;
+background-color:rgb(225,192,203);
+height:3.0 rem;
+}
+#footer{
+text-align:right;
+font-family:"public sans",sans-serif;
+font-weight:normal;
+margin-right:10px;
+}
+label{
+text-align:right;
+font-family:"public sans",san-serif;
+font-weight:normal;
+}
+input{
+text-align:left;
+font-family:"public sans",san-serif;
+font-weight:normal;
+}
+textarea{
+text-align:left;
+font-family:"public sans",san-serif;
+font-weight:normal;
+}
+.error{
+  color: darkred;
+  font-size:12px;
+  font-family:"public sans",san-serif;
+  font-weight:normal;
+}
+.pasword-message{
+text-align: right;
+font-family:"public sans",san-serif;
+font-weight:normal;
+position:relative;
+left:100px;
+background: transparent;
+padding: 10px;
+border-spacing: 2px;
+border-radius: 20px;
+color: rgb(126, 40, 55);
+}
+#review{
+  margin-top: 5px;
+}
+table.output,
+tr.output,
+td.output{
+  width: 500px;
+  background-color:rgb(89, 89, 195);
+  padding: 10px;
+  border-spacing: 2px;
+  border-radius: 20px;
+  color:blueviolet;
+}
+td.output{
+  width: 500px;
+  background-color:azure;
+  padding: 10px;
+  border-spacing: 2px;
+}

@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<!--
+Program name- Cura Cardiology Clinic patient form.html 
+Name- Daisy Que
+date created-2/24/2026
+version 1.0-2/24/26, 2.0-2/25/26,
+Description- This document will be a form for a cardiology clinic that asks the patient to create a portal acount and asks them about their heart condition.
+The background color will be light mint white color and the border will be either red or pink. i will be using times new roman and sans font 
+NOTE:I REFERENCED THE HW 1 TUTORIAL FROM THE MISSO TP RESOURCES BUT I HAVE DIFFRENT VARIABLES FOR EXAMPLE I HAVE DOP WHICH STANDS FOR DATE OF PROCEDURE. 
+for my mock form i made on drawio i couldnt really find a color to match my background color so i settled for that light blue color
+-->
+<html lang="en">  
+  <head>
+     <link rel="stylesheet" href="hw2styles.css">  <!-- link to the css file-->
+    <title> New patient registration|Cura Cardiology Clinic </title> <!-- this will display the text on the tab-->
+  </head>
+  <body> <!-- start of whole body-->
+    <header> <!-- start of header-->
+      <table width="100%">
+        <tr>
+          <td valign="top" align="left" width="25%">
+             <div class="image"> 
+                <img align="center" src="heart.webp" alt="Cura Core logo" width="70px" ID="logo"/>  <!--logo image tag-->           
+             </div>  
+          </td>
+
+          <td>
+            <h2>Cura Cardiology Clinic</h2>
+         </td>
+
+          <td valign="bottom" align="right" width="30%"> 
+           Today's Date:<span id="today"></span> <!-- dynamic date, refers to javascript--> 
+          </td>  
+        </tr>
+      </table>  
+    </header>  
+	<!-- end of header-->  
+<hr>  
+<!-- where form begins-->
+<form action="thanks.html" >
+    <center>
+	<div class="format"> <!--reference later in css file-->
+        <table>
+          <tr>
+             <th colspan="4">Create Patient Account</th>
+          </tr>
+          <!---create patient account section starts here-->
+          <tr>  
+           <td class="td1"><label for="fname">First Name:</label>&nbsp;</td>
+           <td>
+             <input 
+             type="text"
+             name="fname"
+             id="fname"
+             maxlength="30"
+             required
+             title="Enter only letters, apostrophes, and dashes"
+             placeholder="ie.Daisy"
+             pattern="[a-z A-Z]'{1-30}" 
+            onblur="validateFname()" /> <!--use for later assignment, refernce javascript-->
+            <br>
+            <span class="error" id="Fname-error"></span> <!--use for later assignment-->
+           </td>
+          </tr>
+
+          <tr> <!---enter middle initial-->
+           <td class="td1"><label for="mini">Middle Initial:</label></td>
+           <td>
+             <input 
+             type="text"
+             name="mini"
+             id="mini"
+             maxlength="1"
+             required
+             title="Enter only letters"
+             placeholder="ie.R"
+             pattern="[a-z A-Z]'{0-1}"
+            onblur="validatemini()" /> <!--use for later assignment, refernce javascript--> 
+             <br>
+            <span class="error" id="mini-error"></span> <!--use for later assignment-->
+           </td>
+          </tr>
+
+          <tr> <!--last name-->
+           <td class="td1"><label for="lname">Last Name:</label></td>
+           <td>
+             <input 
+             type="text"
+             name="lname"
+             id="lname"
+             maxlength="30"
+             required
+             title="Enter only letters, apostrophes, and dashes"
+             placeholder="ie.Que"
+             pattern="[a-z A-Z]'{1-30}" 
+             onblur="validateLname()" />    <!--use for later assignment, refernce javascript--> 
+              <br>
+            <span class="error" id="Lname-error"></span> <!--use for later assignment-->
+           </td>
+          </tr>
+
+          <tr>
+            <td class="td1"><label for="pgender"> Patient's Gender:</label></td>
+            <td> <!--radio button-->
+              <input
+                type="radio"
+                id="g1"
+                name="pgender"
+                value="Male" />
+                Male 
+            <input
+                type="radio"
+                id="g2"
+                name="pgender"
+                value="Female" />
+               Female
+            <input
+                type="radio"
+                id="g3"
+                name="pgender"
+                value="Other" />
+                Other
+            </td> 
+          </tr>
+
+       <tr>
+          <td class="td1"><label for="DOB"> Date of Birth:</label></td>
+          <td>
+           <input
+               type="date"
+               id="DOB"
+               name="DOB"
+               required
+               onblur="validateDOB()"/>
+             <br>
+            <span class="error" id="DOB-error"></span> <!--use for later assignment-->  
+          </td>
+       </tr>
+        
+       <tr>
+        <td class="td1"><label for="SSN"> SSN:</label></td>
+          <td>
+             <input
+              type="password"
+              minlength="11"
+              maxlength="11"
+              id="SSN"
+              name="SSN"
+              required  
+              title="Enter only numbers"
+              placeholder="123-456-789" 
+              onblur="validateSSN()"/> 
+              <br>
+            <span class="error" id="SSN-error"></span> <!--use for later assignment-->
+           </td> 
+       </tr>
+
+       <tr> 
+          <th colspan="4"><hr></th>  <!--- secton divider--> 
+      </tr>
+      <tr> 
+		  <!---start of contact info section--->
+        <th colspan="4">Patient's Contact Information</th>
+      </tr>
+
+      <tr> <!-- main address-->
+           <td class="td1"><label for="address1">Address:</label></td>
+           <td>
+             <input 
+             type="text"
+             name="address1"
+             id="address1"
+             maxlength="30"
+             required
+             title="Enter address"
+             placeholder="4361 Cougar Village Dr"
+             onblur="validateAddress1()"/>
+             <br>
+            <span class="error" id="address1-error"></span> <!--use for later assignment-->
+           </td>
+       </tr>
+      
+       <tr> <!-- 2nd address-->
+           <td class="td1"><label for="address2">Secondary Address:</label></td>
+           <td>
+             <input 
+             type="text"
+             name="address2"
+             id="address2"
+             maxlength="30"
+             title="Enter secondary address"
+             placeholder="The Quad Dormitory"/>
+           </td>
+       </tr>
+           
+       <tr> <!--city-->
+           <td class="td1"><label for="City">City:</label></td>
+           <td>
+             <input 
+             type="text"
+             name="city"
+             id="city"
+             maxlength="30"
+             required
+             title="Enter City"
+             placeholder="Houston"
+             onblur="validateCity()"/>
+             <br>
+            <span class="error" id="City-error"></span> <!--use for later assignment-->
+           </td>
+          </tr> 
+          <tr>
+     <td class="td1"><label for="state">State:</label></td>
+     <td>
+	     <select>
+           <option selected disabled>Select One</option> <!--I used the link from the MISSO TP resource--> 
+           <option value="AL">Alabama</option>
+           <option value="AK">Alaska</option>
+           <option value="AZ">Arizona</option>
+           <option value="AR">Arkansas</option>
+           <option value="CA">California</option>
+           <option value="CO">Colorado</option>
+           <option value="CT">Connecticut</option>
+           <option value="DE">Delaware</option>
+           <option value="DC">District of Columbia</option>
+           <option value="FL">Florida</option>
+           <option value="GA">Georgia</option>
+           <option value="GU">Guam</option>	
+           <option value="HI">Hawaii</option>	
+           <option value="ID">Idaho</option>	
+           <option value="IL">Illinois</option>	
+           <option value="IN">Indiana</option>	
+           <option value="IA">Iowa</option>	
+           <option value="KS">Kansas</option>	
+           <option value="KY">Kentucky</option>	
+           <option value="LA">Louisiana</option>	
+           <option value="ME">Maine</option>	
+           <option value="MD">Maryland</option>	
+           <option value="MA">Massachusetts</option>	
+           <option value="MI">Michigan</option>	
+           <option value="MN">Minnesota</option>	
+           <option value="MS">Mississippi</option>	
+           <option value="MO">Missouri</option>
+           <option value="MT">Montana</option>
+           <option value="NE">Nebraska</option>
+           <option value="NV">Nevada</option>	
+           <option value="NH">New Hampshire</option>	
+           <option value="NJ">New Jersey</option>	
+           <option value="NM">New Mexico</option>	
+           <option value="NY">New York</option>	
+           <option value="NC">North Carolina</option>	
+           <option value="ND">North Dakota</option>	
+           <option value="OH">Ohio</option>	
+           <option value="OK">Oklahoma</option>	
+           <option value="OR">Oregon</option>	
+           <option value="PA">Pennsylvania</option>	
+           <option value="PR">Puerto Rico</option>	
+           <option value="RI">Rhode Island</option>	
+           <option value="SC">South Carolina</option>	
+           <option value="SD">South Dakota</option>	
+           <option value="TN">Tennessee</option>	
+           <option value="TX">Texas</option>	
+           <option value="UT">Utah</option>	
+           <option value="VT">Vermont</option>	
+           <option value="VA">Virginia</option>	
+           <option value="WA">Washington</option>	
+           <option value="WV">West Virginia</option>	
+           <option value="WI">Wisconsin</option>	
+           <option value="WY">Wyoming</option>	
+        </select>
+       </td>
+   </tr>
+
+    <tr> <!--zip-->
+           <td class="td1"><label for="zipcode">Zip Code:</label></td>
+           <td>
+             <input 
+             type="text"
+             name="zipcode"
+             id="zipcode"
+             minlength="5"
+             maxlength="10"
+             required
+             title="Enter only numbers"   
+             placeholder="78258"
+             pattern="[0-9]{5,10}"
+             onblur="validateZipcode()">  <!--find a way so someone can add - to zipcode-->
+             <br>
+            <span class="error" id="zipcode-error"></span> <!--use for later assignment-->
+           </td>
+          </tr> <!--DONT FORGET TO CHANGE TITLES-->
+
+		   <tr> <!--email-->
+           <td class="td1"><label for="email">Email:</label></td>
+           <td>
+             <input 
+             type="text"
+             name="email"
+             id="email"
+             required
+             title="Email"
+             placeholder="TPclass@gmail.com"
+             onblur="validateEmail()">
+             <br>
+            <span class="error" id="email-error"></span> <!--use for later assignment-->
+           </td>
+          </tr> 
+
+			 <tr> <!--phone number-->
+           <td class="td1"><label for="phnum">Phone Number:</label></td>
+           <td>
+             <input 
+             type="text"
+             name="phnum"
+             id="phnum"
+             maxlength="30"
+             required
+             title="Enter Phone Number"
+             placeholder="123-456-7899"
+             onblur="validatePhnum()"
+             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,20}$">
+             <br>
+            <span class="error" id="phnum-error"></span> <!--use for later assignment-->
+           </td>
+          </tr> 
+
+		  <tr>
+            <td class="td1"><label for="notifytext"> Send Text Notifications?:</label></td>
+            <td> <!--radio button-->
+              <input
+                type="radio"
+                id="n1"
+                name="notifytext"
+                value="Yes" />
+                Yes 
+            <input
+                type="radio"
+                id="n2"
+                name="notifytext"
+                value="No" />
+               No
+            </td> 
+          </tr>
+		  <tr>
+			<th colspan="4"><hr></th>  <!--- secton divider--> 
+		  </tr>
+<!--Patient history section-->
+<tr>
+ <th colspan="4">Patient History</th>
+</tr>
+
+<tr>
+ <td class="td1"><label for="cpro"> Have you had any cardiac procedures?</label></td>
+            <td> <!--radio button-->
+              <input
+                type="radio"
+                id="a1"
+                name="cpro"
+                value="Yes" />
+                Yes
+            <input
+                type="radio"
+                id="a2"
+                name="cpro"
+                value="No" />
+				No 
+            </td> 
+ </tr> 
+ <tr>
+<td class="td1" align="right">
+	  <label for="notes">If yes specify which one </label> 
+  </td> 
+  <td> 
+   <textarea
+	 rows="3"
+	 cols="30"
+	 maxlength="100"
+	 id="notes"
+	 name="notes"
+	 title="enter description"
+	 placeholder="(Insert description here)"
+   ></textarea>
+   </td>
+</tr>
+
+<tr>
+  <td class="td1"><label for="DOP"> Date of Procedure:</label></td> <!--DOP=Date of procedure-->
+          <td>
+           <input
+               type="date"
+               id="DOP"
+               name="DOP"
+               /> 
+          </td>
+       </tr>
+	
+	   <tr>
+ <td class="td1"><label for="fhcp"> Do you have a family history of heart problems?</label></td> <!--fhcp=family heart cardiac problem-->
+            <td> <!--radio button-->
+              <input
+                type="radio"
+                id="a1"
+                name="fhcp"
+                value="Yes" />
+                Yes
+            <input
+                type="radio"
+                id="a2"
+                name="fhcp"
+                value="No" />
+				No 
+            </td> 
+ </tr> 
+
+	<tr>
+      <td class="td1"><label for="sym">Have you had any of these symptoms?</label></td> 
+		 <td>
+                     <input type="checkbox" id="option1" value="Sharp chest pain"/>
+		  <label for="sharp chest pain">Sharp chest pain</label> <br>
+		 
+		  <input type="checkbox" id="option2" value="Syncope"/>
+		  <label for="syncope">Syncope</label> <br>
+
+		  <input type="checkbox" id="option3" value="Shortness of breath"/>
+		  <label for="Shortness of breath">Shortness of breath</label> <br>  
+
+		  <input type="checkbox" id="option4" vaulue="Palpitations"/>
+		  <label for="Palpitations">Palpitations</label> <br>
+
+		  <input type="checkbox" id="option5" vaulue="Other"/>
+		  <label for="Other">Other</label> <br>
+ 
+		 </td>
+	</tr>
+
+ <tr>
+<td class="td1" align="right">
+	  <label for="notes">Explain symptoms if you checked any boxes  </label> 
+  </td> 
+  <td> 
+   <textarea
+	 rows="4"
+	 cols="50"
+	 maxlength="500"
+	 id="notes"
+	 name="notes"
+	 title="enter description"
+	 placeholder="(Insert description here)"
+   ></textarea>
+   </td>
+</tr>
+<!---slider---->
+	<tr>
+      <td class="td1"><label for="range">On a scale of 1-10 how do you feel today?<br/></label></td> 
+		<td>
+          <input
+			type="range"
+			name="range" 
+			id="range"
+			min="1"
+			max="10"
+			value="0"
+			  /> 
+		<span id="range-scale"></span> <!--javascript--->
+	  </td>
+	</tr> 
+
+<!---final portal account section--->
+<th colspan="4"><hr></th>  <!--- secton divider--> 
+    <tr>
+      <th colspan="4">Complete Patient Account</th>
+    </tr>
+			
+	<tr>
+<td class="td1"><label for="usename">Username:</label></td> 
+   <td>
+	   <input
+     type="text"
+	 name="usename"
+	 id="usename"
+   minlength="5"
+	 maxlengh="30"
+	 required
+	 title="must contain at least 5 characters, only letters and numbers, and cant start with a number"
+	 placeholder="adnjv8!" 
+   onblur="validateusename()"
+   pattern="[A-Za-z][A-Za-z0-9]{5,30}"/>
+   <br>
+    <span class="error" id="usename-error"></span> <!--use for later assignment-->
+	</td>
+ </tr>
+
+	<tr>
+<td class="td1"><label for="pasword">Password:</label></td> 
+   <td>
+	   <input
+     type="password"
+	 name="pasword"
+	 id="pasword"
+	 minlength="8"
+	 maxlengh="20"
+	 required
+	 title="must contain at least 8 characters, 1 upper case, 1 lower case letter, 1 digit and 1 special character"
+	 placeholder="required" 
+   onblur="validatepasword()"
+   oninput="validatepasword()"
+   onfocus="validatepasword()"/>
+    <br>
+     <span class="error" id="pasword-error"></span> <!--use for later assignment-->
+	</td>
+ </tr>
+
+<tr>
+<td class="td1"><label for="cpasword">Confirm Password:</label></td> 
+   <td>
+	   <input
+     type="password"
+	 name="cpasword"
+	 id="cpasworde"
+	 minlength="8"
+	 maxlengh="20"
+	 required
+	 title="re-enter password "
+	 placeholder="required"
+   onblur="confirmpasword()"
+   oninput="confirmpasword()"
+   onfocus="confirmpasword()" />
+   <br>
+     <span class="error" id="pasword-error"></span> <!--use for later assignment-->
+	</td>
+ </tr>
+
+<tr>
+<td class="td1" colspan="4">
+	<center>
+		<input
+			type="submit"
+			name="submit"
+			id="submit"
+			style="font-family:'Times New Roman',serif typeface;"
+			/>
+		<input
+			type="reset"
+			name="reset"
+			id="reset"
+			style="font-family:'Times New Roman', serif typeface;"
+			/>
+      <input
+			type="button"
+			name="review"
+			id="review"
+			style="font-family:'Times New Roman', serif typeface;"
+      value="review"
+			/>
+	</center> 
+</td>
+</tr>
+</table>
+    </div> 
+<div class="pasword-message">
+<span id="message1"></span>
+<br/>
+
+<span id="message2"></span>
+<br/>
+
+<span id="message3"></span>
+<br/>
+
+<span id="message4"></span>
+<br/>
+
+<span id="message5"></span>
+<br/>
+
+<span id="message6"></span>
+<br/>
+
+<span id="message7"></span>
+<br/>
+
+<span id="pasword2-error"></span>
+<br/>
+</div>
+ <center>
+  <pas id="showInput"></p>
+ </center>
+</div>
+
+
+
+	</center> 
+</form>
+ <footer> 
+ <p id="footer"> &#169 2026 Cura Cardilogy|<a href="insert.link.here" target="_blank rel="noopener noreferrer">Keep in touch with us!</a> </p>
+ </footer>
+	<script src="hw2scripts.js" ></script>
+  </body> <!--- end of whole body-->
+</html>   
+
+	
+
+	
+		
+      
