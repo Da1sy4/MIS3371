@@ -20,8 +20,8 @@ slider.oninput=function() {output.innerHTML=this.value;};
 function validateDOB()
 {
  const DOBInput=document.getElementById("DOB").innerHTML;
- const DOB=DOBInput.value;
- let date=new Date(DOB.value);
+ const DOB=DOBInput.valueOf;  //.value 
+ let date=new Date(DOB.valueOf);
  let maxDate=new Date().setFullYear(new Date()-120);
 
  if(date>newDate()) /*validating DOb, cant figure out why it doesnt work */{
@@ -123,7 +123,7 @@ function validateusename(){ //validate username
     document.getElementById("usename-error").innerHTML="username can't begin with a number";
     return false;
  }  
- let regex=/^[a-zA-Z0-9_]+$/;
+ let regex=/^[a-zA-Z0-9-]+$/;
  if(!regex.test(usename)){
     document.getElementById("usename-error").innerHTML="username can only have letters, numbers, or underscores";
     return false;
@@ -141,7 +141,7 @@ function validateusename(){ //validate username
  }
 }
  
-function validatepasword(){//password validation//
+function validatepasword(){
  const pasword=document.getElementById("pasword-error").value;
  const usename=document.getElementById("usename-error").value;
  const errorMessage=[];
@@ -157,7 +157,7 @@ function validatepasword(){//password validation//
     errorMessage.push("enter at least one number");
  }
 
- if (pasword.match((/[!\@#\$%&*\-_\\.+\(\)]/))){ // got from MISSO resource//
+ if (pasword.match((/[!\@#\$%&*\-_\\.+\(\)]/)))
     errorMessage.push("enter at least one special character");
  }
   
@@ -169,7 +169,7 @@ const errorContainer=document.querySelector(".pasword-message");
 errorContainer.innerHTML= 'errorMesssage'
 .map((message)=> '<span>($message)</span><br/>')
 .join("");
-}     
+     
 
 function confirmpasword(){
     pasword1=document.getElementById("pasword").value;
@@ -182,36 +182,36 @@ function confirmpasword(){
        return true;
     }   
 }
-function reviewInput(){
+ function reviewInput() { //problem
     var formcontent=document.getElementById("signup");
     var formoutput="<table class='output'><tr><th colspan='2'>Review your infromation:</th></tr>";
-    for(var i=0;i<formcontent.nextElementSibling.length;i++){
-        var el=formcontent.elements[i];
-        var datatype=el.type;
-        var Name=el.Name;
-        var value=el.value;
-        if(!Name)continue;
-        switch(datatype){
+    for(var i = 0; i <formcontent.elements.length;i++){
+        var el= formcontent.elements[i];
+        var datatype= el.type;
+        var name= el.name;
+        var value= el.value;
+        if (!name) continue;
+        switch (datatype) {
           case "checkbox":
-            if(el.checked){
-                formoutput += "<tr><td align='right'>"+Name+"</td>";
+           if (el.checked) {
+                formoutput += "<tr><td align='right'>"+name+"</td>";
                 formoutput += "<td class='outputdata'>&#x2713;</td></tr>"; //got >&#x2713 from MISSO resource//
            } 
-           <br/>;
+           break;
            case "range":
-            if(value !=="0"){
-                formoutput += "<tr><td align='right'>"+Name+"</td>";
-                 formoutput += "<td class='outputdata'>"+value+"</td></tr>";
+           if (value !=="0"){
+                formoutput += "<tr><td align='right'>"+ name +"</td>";
+                formoutput += "<td class='outputdata'>"+ value +"</td></tr>";
                 
             } 
-            <br/>;
+            break;
             case "button":
             case "submit":
             case "reset":
-            <br/>;
+            break;
             default:
                 if(value !==""){
-                    formoutput += "<tr><td align='right>" +Name + "</td>";
+                    formoutput += "<tr><td align='right>" + name + "</td>";
                     formoutput += "<td class='outputdata'>"+ value + "</td></tr>";
 
                 }
@@ -223,4 +223,4 @@ function reviewInput(){
 function removeReview(){
     document.getElementById("showInput").innerHTML="";
 
-}
+ }
